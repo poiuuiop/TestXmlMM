@@ -37,6 +37,8 @@ public class Main extends Activity
 
 		//ParseFXML();
 
+		
+		
 		ParseOFXML();
 		
 		/*ParseMSxml pXml=new ParseMSxml(readXml());
