@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<update>
+	<entry>
+		<id>1235</id>
+		<description>
+			<title>Виктория</title>
+			<type>Гостиница</type>
+			<net>Виктория</net>
+			<stars>4</stars>
+			<latitude>53.921108</latitude>
+			<longitude>27.527168</longitude>
+			<shorttext type="html">
+				<p>Одна из самых крупных, многофункциональных, с большим количеством предоставляемых услуг<strong>гостиница Виктория</strong>(hotel Victoria) категории 4 звезды порадует любого, даже самого искушенного посетителя.</p>
+				<p>Стоит отметить, что <strong>гостиница  Виктория  в Минске</strong> (hotel Victoria) первая гостиница, которая совмещена с бизнес-центром  А  класса.</p>
+				<p style="text-align: justify;">Открытие гостиницы  Виктория  состоялось в июле 2007 года. Расположение гостиничного комплекса весьма удобно. Находится он на проспекте Победителей. Недалеко расположен железнодорожный вокзал, выставочный комплекс  Минск-Арена  и две станции метро:  Немига  и  Фрунзенская . Также отель окружен большим количеством живописных культурных и исторических мест города.</p>
+			</shorttext>
+			<text type="html">
+				<p style="text-align: justify;">Одна из самых крупных, многофункциональных, с большим количеством предоставляемых услуг<strong>гостиница  Виктория </strong> (hotel Victoria) категории 4 звезды порадует любого, даже самого искушенного посетителя.</p>
+				<p style="text-align: justify;">Стоит отметить, что <strong>гостиница  Виктория  в Минске</strong> (hotel Victoria) первая гостиница, которая совмещена с бизнес-центром  А  класса.</p>
+				<p style="text-align: justify;">Открытие гостиницы  Виктория  состоялось в июле 2007 года. Расположение гостиничного комплекса весьма удобно. Находится он на проспекте Победителей. Недалеко расположен железнодорожный вокзал, выставочный комплекс  Минск-Арена  и две станции метро:  Немига  и  Фрунзенская . Также отель окружен большим количеством живописных культурных и исторических мест города.</p>
+				<p style="text-align: justify;">Номерной фонд гостиницы  Виктория  вмещает 169 номеров высокой комфортабельности. Из окон номера открывается замечательный вид на городской пейзаж и реку Свислочь. Все номера оборудованы мини-сейфами и мини-барами, системой кондиционирования, интерактивным телевидением и междугородним телефоном.</p>
+				<p>Отель включает в себя следующие виды номеров: Single, Double, Twin , Luxe , Apartament.</p>
+				<p style="text-align: justify;">Для посетителей, которые прибыли в отель с целью рабочего визита или деловых переговоров, гостиница  Виктория  предлагает конференц-зал, конгресс-холл, банкетный зал, комнату переговоров, бизнес-центр.</p>
+				<p style="text-align: justify;">Также Вас порадует вежливый персонал. Работники гостиничного комплекса владеют английским, немецким и французским языками.</p>
+				<p>Курение на территории гостиничного комплекса разрешено.</p>
+				<p>Также в отеле предусмотрена оплата услуг с помощью пластиковых карт: Master Card, Maestro, VISA, Visa Electron.</p>
+				<p>Перечень услуг гостиницы  Виктория :</p>
+				<ul>
+					<li>Бронирование номеров;</li>
+					<li>Кафе, лобби бар, суши-бар, рестораны, пиццерия;</li>
+					<li>Казино;</li>
+					<li>Wi-Fi;</li>
+					<li>Фитнес-центр, мини-бассейн, косметологический кабинет;</li>
+					<li>Сауна;</li>
+					<li>Салон-парикмахерская, салон красоты, солярий;</li>
+					<li>Камера хранения;</li>
+					<li>Круглосуточный обмен валют;</li>
+					<li>Прокат автомобилей и заказ транспортных средств (такси);</li>
+					<li>Бесплатная, охраняемая парковка;</li>
+					<li>Пассажирские перевозки (трансфер);</li>
+					<li>Услуги прачечной и химчистки.</li>
+				</ul>
+			</text>
+		</description>
+		<specification>
+			<item name="stars" type="integer">4</item>
+			<item name="web" type="URL">www.hotel-victoria.by</item>
+			<item name="Wi-Fi" type="boolean">true</item>
+			<item name="banqueting_hall" type="boolean">true</item>
+			<item name="casino" type="boolean">true</item>
+			<item name="storage" type="boolean">true</item>
+			<item name="conference_hall" type="boolean">true</item>
+			<item name="shop" type="boolean">true</item>
+			<item name="bar" type="boolean">true</item>
+			<item name="currency_exchange" type="boolean">true</item>
+			<item name="restaurant" type="boolean">true</item>
+			<item name="daily_press" type="boolean">true</item>
+			<item name="travel_services" type="boolean">true</item>
+			<item name="concierge_services" type="boolean">true</item>
+			<item name="fitness_center" type="boolean">true</item>
+			<item name="dry_cleaning" type="boolean">true</item>
+			<item name="phone" type="text">+375 17 239-77-77</item>
+			<item name="address" type="text">г. Минск, Пр-т Победителей, 59</item>
+			<item name="hours" type="text"></item>
+			<item name="number_rooms" type="text">169 номеров</item>
+			<item name="type" type="text">Бизнес Класс - 4 звезды</item>
+			<item name="organizational_capabilities" type="text">Wi-Fi, Бронирование номеров,  Камера хранения, фитнес-центр, мини-бассейн, Косметологический кабинет, Круглосуточный обмен валют, Пассажирские перевозки (трансфер), Прокат автомобилей и заказ транспортных средств (такси), Салон красоты, Салон-парикмахерская, Солярий, Услуги прачечной и химчистки</item>
+			<item name="check" type="text"></item>
+			<item name="types_rooms" type="text">Single,Twin,Luxe,Apartament</item>
+			<item name="conference_banqueting" type="text">Банкетный зал, Бизнес-центр, Конгресс-холл, Комната переговоров, Конференц-зал, Копировально-множительный центр</item>
+			<item name="restaurants_bars" type="text">Лобби бар, Кафе, Рестораны, Пиццерия, Суши-бар</item>
+			<item name="tourist_services" type="text">Визовая поддержка, Экскурсии по городу и Республике, Услуги гида-переводчика, Заказ театральных билетов</item>
+			<item name="entertainment" type="text">Казино, Киоск по продаже сувениров, Сауна, Тренажерный зал</item>
+			<item name="payment" type="text">Maestro, Master Card, VISA, Visa Electron</item>
+			<item name="languages" type="text">английский, немецкий, французский</item>
+			<item name="parcking" type="text">есть, бесплатная охраняемая</item>
+			<item name="smocking" type="text">разрешено</item>
+		</specification>
+		<pictures>
+			<link>http://mapstep.by/xxxxx/pic1.png</link>
+			<link>http://mapstep.by/xxxxx/pic2.png</link>
+			<link>http://mapstep.by/xxxxx/pic3.png</link>
+			<link>http://mapstep.by/xxxxx/pic4.png</link>
+		</pictures>
+	</entry>
+	<entry>
+		<id>1236</id>
+		<description>
+			.
+			.
+			.
+		</description>
+		<specification>
+			.
+			<item name=".....">XXXXXXXXXX</item>
+			.
+		</specification>
+		<pictures>
+			<link>http://mapstep.by/xxxxx/picXX.png</link>
+		</pictures>
+	</entry>
+</update>
