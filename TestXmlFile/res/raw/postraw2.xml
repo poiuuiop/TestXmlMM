@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<update>
+	<entry>
+		<id>139</id>
+		<description>
+			<title>Алмаз</title>
+			<type>Гостиничный комплекс</type>
+			<stars>0</stars>
+			<icon>www.mapstep.by/files/contents/139/150x100.jpg</icon>
+			<latitude>53.879883</latitude>
+			<longitude>27.689516</longitude>
+			<shorttext type="html">
+				&lt;p align=&quot;justify&quot;&gt;&lt;strong&gt;Гостиница Алмаз&lt;/strong&gt; имеет довольно широкий спектр услуг и сможет удовлетворить запросы любого посетителя. Уютная, вместительная, комфортабельная &amp;ndash; она способна покорить с первого взгляда. Гостиница Алмаз в Минске расположена в тихом районе города Минска. Далеко от городского шума и суеты. Она станет настоящим подарком для любителей спокойного отдыха. Гостиница Алмаз окружена лесопарковой зоной, так что живописная местность и свежий воздух Вам обеспечены. Недалеко от гостиницы Алмаз находится станция метро &amp;laquo;Могилевская&amp;raquo;, что обеспечивает удобство передвижения по городу. Также рядом расположен Новый драматический театр, где Вы сможете отлично провести время.&lt;/p&gt;
+			</shorttext>
+			<text type="html">
+				&lt;p align=&quot;justify&quot;&gt;&lt;strong&gt;Гостиница Алмаз&lt;/strong&gt; имеет довольно широкий спектр услуг и сможет удовлетворить запросы любого посетителя. Уютная, вместительная, комфортабельная &amp;ndash; она способна покорить с первого взгляда. &lt;strong&gt;Гостиница Алмаз в Минске&lt;/strong&gt; расположена в тихом районе города Минска. Далеко от городского шума и суеты. Она станет настоящим подарком для любителей спокойного отдыха. Гостиница Алмаз окружена лесопарковой зоной, так что живописная местность и свежий воздух Вам обеспечены. Недалеко от гостиницы Алмаз находится станция метро &amp;laquo;Могилевская&amp;raquo;, что обеспечивает удобство передвижения по городу. Также рядом расположен Новый драматический театр, где Вы сможете отлично провести время.&lt;/p&gt;
+				&lt;p align=&quot;justify&quot;&gt;Номерной фонд гостиницы Алмаз включает 91 номер. Среди них есть как номера эконом класса, так и класса люкс, бизнес-класса и люкс для молодоженов. В них Вы найдете все необходимое: спутниковое ТВ, телефон, холодильник, радио, душ, кондиционер, Интернет, оборудование для инвалидов. Также возможна услуга заказа обслуживания в номер.&lt;/p&gt;
+				&lt;p align=&quot;justify&quot;&gt;Внимательный и профессиональный персонал обеспечит Вам незабываемый отдых. Также работники гостиничного комплекса владеют английским, немецким и французским языками.&lt;/p&gt;
+				&lt;p align=&quot;justify&quot;&gt;К оплате в гостиничном комплексе Алмаз принимаются карточки Master Card, Visa Electron, Maestro, VISA.&lt;/p&gt;
+				&lt;p align=&quot;justify&quot;&gt;Перечень основных услуг гостиницы:&lt;/p&gt;
+				&lt;ul&gt;
+				&lt;li&gt;бронирование;&lt;/li&gt;
+				&lt;li&gt;вызов такси;&lt;/li&gt;
+				&lt;li&gt;платная парковка;&lt;/li&gt;
+				&lt;li&gt;Wi-Fi;&lt;/li&gt;
+				&lt;li&gt;спутниковое ТВ;&lt;/li&gt;
+				&lt;li&gt;конференц-зал;&lt;/li&gt;
+				&lt;li&gt;бизнес-центр;&lt;/li&gt;
+				&lt;li&gt;комната переговоров;&lt;/li&gt;
+				&lt;li&gt;банкетный зал;&lt;/li&gt;
+				&lt;li&gt;бассейн;&lt;/li&gt;
+				&lt;li&gt;камера хранения;&lt;/li&gt;
+				&lt;li&gt;отдел обслуживания;&lt;/li&gt;
+				&lt;li&gt;косметологический кабинет;&lt;/li&gt;
+				&lt;li&gt;солярий;&lt;/li&gt;
+				&lt;li&gt;салон-парикмахерская;&lt;/li&gt;
+				&lt;li&gt;сауна;&lt;/li&gt;
+				&lt;li&gt;ресторан, кафе;&lt;/li&gt;
+				&lt;li&gt;номера для некурящих;&lt;/li&gt;
+				&lt;li&gt;массажный кабинет;&lt;/li&gt;
+				&lt;li&gt;стоматология.&lt;/li&gt;
+				&lt;/ul&gt;
+			</text>
+		</description>
+		<specification>
+			<item name="tip" type="text">Эконом категория</item>
+			<item name="organ" type="text">Wi-Fi, Бассейн, Бронирование номеров, Камера хранения, Косметологический кабинет, Отдел обслуживания, Салон-парикмахерская, Солярий</item>
+			<item name="zasvus" type="text"></item>
+			<item name="vidu" type="text">бизнес-класс, однокомнатные и двухкомнатные люксы, люкс для молодоженов</item>
+			<item name="conban" type="text">Банкетный зал, Бизнес-центр, Комната переговоров, Конференц-зал, Копировально-множительный центр</item>
+			<item name="restoran" type="text">VIP-кафе, Ресторан</item>
+			<item name="otdux" type="text">Сауна</item>
+			<item name="tourist" type="text"></item>
+			<item name="visa" type="text">Maestro, Master Card, VISA, Visa Electron</item>
+			<item name="lang" type="text">английский, немецкий</item>
+			<item name="smok" type="text"></item>
+			<item name="park" type="text">есть, платная охраняемая</item>
+			<item name="zvezda" type="text">без категории</item>
+			<item name="xim" type="boolean">false</item>
+			<item name="fitness" type="boolean">false</item>
+			<item name="konserzh" type="boolean">false</item>
+			<item name="tyrist" type="boolean">false</item>
+			<item name="pressa" type="boolean">false</item>
+			<item name="resto" type="boolean">true</item>
+			<item name="obmen" type="boolean">false</item>
+			<item name="nbar" type="boolean">false</item>
+			<item name="shop" type="boolean">false</item>
+			<item name="conference" type="boolean">true</item>
+			<item name="baggage" type="boolean">false</item>
+			<item name="casinooo" type="boolean">false</item>
+			<item name="bankt" type="boolean">true</item>
+			<item name="wiif" type="boolean">true</item>
+		</specification>
+	</entry>
+	<entry>
+		<id>1236</id>
+		<description>
+			.
+			.
+			.
+		</description>
+		<specification>
+			.
+			<item name=".....">XXXXXXXXXX</item>
+			.
+		</specification>
+		<pictures>
+			<link>http://mapstep.by/xxxxx/picXX.png</link>
+		</pictures>
+	</entry>
+</update>

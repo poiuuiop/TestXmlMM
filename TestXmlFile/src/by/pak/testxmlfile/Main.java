@@ -121,12 +121,12 @@ public class Main extends Activity
 			if(!TextUtils.isEmpty(tmp)) Log.i("XML","\nAttributes: "+tmp);
 			*/
 			if(localName.equals(TEXT)) item=true;
-			if(!localName.equals(TEXT)&&item==true) rssResult=rssResult+"<"+localName+">";
+			if(!localName.equals(TEXT)&&item==true) rssResult=rssResult+" <"+localName+">";
 		}
 
 		public void endElement(String namespaceURI, String localName,String qName) throws SAXException
 		{
-			if(!localName.equals(TEXT)&&item==true) rssResult=rssResult+"</"+localName+">";
+			if(!localName.equals(TEXT)&&item==true) rssResult=rssResult+"</"+localName+"> ";
 			if(localName.equals(TEXT)) item=false;
 		}
 
@@ -219,6 +219,6 @@ public class Main extends Activity
 
 	private InputStream readXml()
 	{
-	    return getResources().openRawResource(R.raw.postraw);
+	    return getResources().openRawResource(R.raw.postraw2);
 	}
 }
