@@ -94,8 +94,22 @@ public class ParserXML
 		private static final String SPECIFICATION="specification";
 		private static final String ITEM="item";
 		
-		private boolean update,entry,id,description,title,type,stars,icon,latitude,longitude,shorttext,text,specification,item;
+		private boolean update=false;
+		private boolean entry=false;
+		private boolean id=false;
+		private boolean description=false;
+		private boolean title=false;
+		private boolean type=false;
+		private boolean stars=false;
+		private boolean icon=false;
+		private boolean latitude=false;
+		private boolean longitude=false;
+		private boolean shorttext=false;
+		private boolean text=false;
+		private boolean specification=false;
+		private boolean item=false;
 		
+		@Override
 		public void startElement(String uri, String localName, String qName,Attributes attrs) throws SAXException
 		{
 			//Log.i("XML","\n\nlocalName: "+localName+"\nqName: "+qName);
@@ -111,18 +125,19 @@ public class ParserXML
 			if(localName.equals(TEXT)) text=true;
 			if(text==true && !localName.equals(TEXT)) rssResult=rssResult+" <"+localName+">";
 		}
-
+		
+		@Override
 		public void endElement(String namespaceURI, String localName,String qName) throws SAXException
 		{
 			if(text==true && !localName.equals(TEXT)) rssResult=rssResult+"</"+localName+"> ";
 			if(localName.equals(TEXT)) text=false;
 		}
-
+		
+		@Override
 		public void characters(char[] ch, int start, int length) throws SAXException
 		{
 			String cdata=new String(ch,start,length);
-			if(text==true) rssResult=rssResult+cdata.trim();//).replaceAll("\\s+"," ")+"\t";
-			Log.i("XML","Data: "+cdata);
+			if(text==true) rssResult=rssResult+cdata.trim();
 		}
 
 	}
