@@ -7,6 +7,8 @@ import android.util.Log;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import by.pak.SAXParserXML.ParserXML;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -39,13 +41,16 @@ public class Main extends Activity
 
 		
 		
-		ParseOFXML();
+		//ParseOFXML();
 		
 		/*ParseMSxml pXml=new ParseMSxml(readXml());
 		mes=pXml.parse();
 		//Log.i("PARSE", "mes "+mes.get().getId()+mes.get(1).getTitle());
 		Log.i("Parse", "mes "+mes.get(0).getShorttext());
 		*/
+		ParserXML parse=new ParserXML(this.getBaseContext());
+		rssResult=parse.getResult();
+		
 		WebView webview =(WebView)findViewById(R.id.webView1);
 		rssResult="<?xml version=\"1.0\" encoding=\"UTF-8\"?><html><body>"+rssResult+"</body></html>";//
 		webview.loadData(rssResult, "text/html;charset=utf-8","utf-8");
