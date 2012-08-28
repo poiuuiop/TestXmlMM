@@ -1,5 +1,7 @@
 package by.pak.SAXParserXML;
 
+import org.xml.sax.Attributes;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
@@ -15,7 +17,7 @@ public class Entry implements Comparable<Entry>
 	public final static int BOOL=1;
 	public final static int TEXT=2;
 	public final static int INT=1;
-			
+	
 	static SimpleDateFormat FORMATTER=new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z");
 	private URL link;
 	private String description;
@@ -74,27 +76,6 @@ public class Entry implements Comparable<Entry>
 		this.description=description.trim();
 	}
 	
-	public String getDate()
-	{
-		return FORMATTER.format(this.date);
-	}
-
-	public void setDate(String date)
-	{
-		// pad the date if necessary
-		while(!date.endsWith("00"))
-		{
-			date+="0";
-		}
-		try
-		{
-			this.date=FORMATTER.parse(date.trim());
-		}
-		catch (ParseException e)
-		{
-			throw new RuntimeException(e);
-		}
-	}
 
 	public Entry copy()
 	{
@@ -120,8 +101,6 @@ public class Entry implements Comparable<Entry>
 		sb.append("Title: ");
 		sb.append(title);
 		sb.append('\n');
-		sb.append("Date: ");
-		sb.append(this.getDate());
 		sb.append('\n');
 		sb.append("Link: ");
 		sb.append(link);
@@ -316,30 +295,44 @@ public class Entry implements Comparable<Entry>
 	{
 		this.text=Text.trim();
 	}
-
-	public void addItem(String name,String type,String value)
+	
+	public void addItem(Attributes attrs,String value)
 	{
 		if(specification==null) specification = new ArrayList<Map<String, ?>>();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("name", name);
 		
-		if(type.equalsIgnoreCase("boolean"))
+		String tmp="";
+		for(int i=0;i<attrs.getLength();i++)
 		{
-			map.put("type", BOOL);
-			if(value.equalsIgnoreCase("true")) map.put("value", true);
-			else map.put("value", false);
-		}
-		else
-		{
-			if(type.equalsIgnoreCase("text"))
+			tmp=attrs.getLocalName(i)+" = "+attrs.getValue(i)+", ";
+			if(tmp.equals("name"))
 			{
-				map.put("type", TEXT);
-				map.put("value", value);
+				map.put("name", attrs.getValue(i));
+				continue;
+			}
+			if(tmp.equals("alias"))
+			{
+				map.put("alias", attrs.getValue(i));
+				continue;
+			}
+			if(tmp.equalsIgnoreCase("boolean"))
+			{
+				map.put("type", BOOL);
+				if(value.equalsIgnoreCase("true")) map.put("value", true);
+				else map.put("value", false);
 			}
 			else
 			{
-				map.put("type", type);
-				map.put("value", value);
+				if(tmp.equalsIgnoreCase("text"))
+				{
+					map.put("type", TEXT);
+					map.put("value", value);
+				}
+				else
+				{
+					map.put("type", tmp);
+					map.put("value", value);
+				}
 			}
 		}
 		this.specification.add(map);

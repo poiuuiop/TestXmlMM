@@ -4,10 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.sax.Element;
+import android.sax.EndElementListener;
+import android.sax.RootElement;
 import android.util.Log;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import by.pak.testxmlfile.Message;
 import by.pak.testxmlfile.R;
 
 import org.xml.sax.Attributes;
@@ -18,6 +22,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,17 +32,27 @@ import javax.xml.parsers.SAXParserFactory;
 public class ParserXML
 {
 	private Resources res=null;
-	String rssResult="";
+	String result="";
+	boolean update=false;
+	boolean entry=false;
+	boolean id=false;
+	boolean description=false;
+	boolean title=false;
+	boolean type=false;
+	boolean stars=false;
+	boolean icon=false;
+	boolean latitude=false;
+	boolean longitude=false;
+	boolean shorttext=false;
+	boolean text=false;
+	boolean specification=false;
 	boolean item=false;
-	List<Entry> mes;
-/*
 
-		ParseOFXML();
-
-		WebView webview =(WebView)findViewById(R.id.webView1);
-		rssResult="<?xml version=\"1.0\" encoding=\"UTF-8\"?><html><body>"+rssResult+"</body></html>";//
-		webview.loadData(rssResult, "text/html;charset=utf-8","utf-8");
-*/
+	final Entry currentEntry=new Entry();
+	final List<Entry> messages=new ArrayList<Entry>();
+	
+	private Attributes tmpAttrs;
+	private String tmpValue;
 	
 	/**
 	 * SAX Parser
@@ -56,7 +71,6 @@ public class ParserXML
 			//InputSource inputSource=new InputSource(rssUrl.openStream());
 			InputSource inputSource=new InputSource(readXml());
 			xmlReader.parse(inputSource);
-			//rss.setText(rssResult);
 		}
 		catch (IOException e)
 		{
@@ -70,6 +84,16 @@ public class ParserXML
 		{
 			Log.e("errorParser",e.getMessage());
 		}
+	}
+	
+	public String getResult()
+	{
+		return result;
+	}
+
+	private InputStream readXml()
+	{
+		return res.openRawResource(R.raw.postraw2);
 	}
 
 	/**
@@ -93,62 +117,190 @@ public class ParserXML
 		private static final String TEXT="text";
 		private static final String SPECIFICATION="specification";
 		private static final String ITEM="item";
-		
-		private boolean update=false;
-		private boolean entry=false;
-		private boolean id=false;
-		private boolean description=false;
-		private boolean title=false;
-		private boolean type=false;
-		private boolean stars=false;
-		private boolean icon=false;
-		private boolean latitude=false;
-		private boolean longitude=false;
-		private boolean shorttext=false;
-		private boolean text=false;
-		private boolean specification=false;
-		private boolean item=false;
-		
+
+		/*
+		public List<Entry> parse()
+		{*/
+
 		@Override
 		public void startElement(String uri, String localName, String qName,Attributes attrs) throws SAXException
 		{
-			//Log.i("XML","\n\nlocalName: "+localName+"\nqName: "+qName);
-			
-			tmp="";
-			/*
-			for(int i=0;i<attrs.getLength();i++)
+			if(localName.equals(ENTRY))
 			{
-				tmp=tmp+attrs.getLocalName(i)+" = "+attrs.getValue(i)+", ";
+				entry=true;
+				return;
 			}
-			if(!TextUtils.isEmpty(tmp)) Log.i("XML","\nAttributes: "+tmp);
-			*/
-			if(localName.equals(TEXT)) text=true;
-			if(text==true && !localName.equals(TEXT)) rssResult=rssResult+" <"+localName+">";
+			if(localName.equals(ID))
+			{
+				id=true;
+				return;
+			}
+			if(localName.equals(DESCRIPTION))
+			{
+				description=true;
+				return;
+			}
+			if(localName.equals(TITLE))
+			{
+				title=true;
+				return;
+			}
+			if(localName.equals(TYPE))
+			{
+				type=true;
+				return;
+			}
+			if(localName.equals(STARS))
+			{
+				stars=true;
+				return;
+			}
+			if(localName.equals(ICON))
+			{
+				icon=true;
+				return;
+			}
+			if(localName.equals(LATITUDE))
+			{
+				latitude=true;
+				return;
+			}
+			if(localName.equals(LONGITUDE))
+			{
+				longitude=true;
+				return;
+			}
+			if(localName.equals(SHORTTEXT))
+			{
+				shorttext=true;
+				return;
+			}
+			if(localName.equals(TEXT))
+			{
+				text=true;
+				return;
+			}
+			if(localName.equals(SPECIFICATION))
+			{
+				specification=true;
+				return;
+			}
+			if(localName.equals(ITEM))
+			{
+				item=true;
+				return;
+			}
+			
+			if(text==true && !localName.equals(TEXT))
+			{
+				result=result+" <"+localName+">";
+				return;
+			}
+			if(shorttext==true && !localName.equals(SHORTTEXT))
+			{
+				result=result+" <"+localName+">";
+				return;
+			}
+			if(item==true && !localName.equals(ITEM))
+			{
+				result=result+" <"+localName+">";
+				return;
+			}
 		}
 		
 		@Override
 		public void endElement(String namespaceURI, String localName,String qName) throws SAXException
 		{
-			if(text==true && !localName.equals(TEXT)) rssResult=rssResult+"</"+localName+"> ";
-			if(localName.equals(TEXT)) text=false;
+			if(text==true && !localName.equals(TEXT))
+			{
+				result=result+"</"+localName+"> ";
+				return;
+			}
+			if(shorttext==true && !localName.equals(SHORTTEXT))
+			{
+				result=result+"</"+localName+"> ";
+				return;
+			}
+			if(item==true && !localName.equals(ITEM))
+			{
+				result=result+"</"+localName+"> ";
+				return;
+			}
+			
+			if(localName.equals(ID))
+			{
+				id=false;
+				return;
+			}
+			if(localName.equals(DESCRIPTION))
+			{
+				description=false;
+				return;
+			}
+			if(localName.equals(TITLE))
+			{
+				title=false;
+				return;
+			}
+			if(localName.equals(TYPE))
+			{
+				type=false;
+				return;
+			}
+			if(localName.equals(STARS))
+			{
+				stars=false;
+				return;
+			}
+			if(localName.equals(ICON))
+			{
+				icon=false;
+				return;
+			}
+			if(localName.equals(LATITUDE))
+			{
+				latitude=false;
+				return;
+			}
+			if(localName.equals(LONGITUDE))
+			{
+				longitude=false;
+				return;
+			}
+			if(localName.equals(SHORTTEXT))
+			{
+				shorttext=false;
+				return;
+			}
+			if(localName.equals(TEXT))
+			{
+				text=false;
+				return;
+			}
+			if(localName.equals(SPECIFICATION))
+			{
+				specification=false;
+				return;
+			}
+			if(localName.equals(ITEM))
+			{
+				item=false;
+				currentEntry.addItem(tmpAttrs,tmpValue);
+				return;
+			}
+			if(localName.equals(ENTRY))
+			{
+				entry=false;
+				messages.add(currentEntry.copy());
+				return;
+			}
 		}
 		
 		@Override
 		public void characters(char[] ch, int start, int length) throws SAXException
 		{
 			String cdata=new String(ch,start,length);
-			if(text==true) rssResult=rssResult+cdata.trim();
+			if(text==true) result=result+cdata.trim();
 		}
-
-	}
-	
-	public String getResult()
-	{
-		return rssResult;
-	}
-
-	private InputStream readXml()
-	{
-		return res.openRawResource(R.raw.postraw2);
 	}
 }
