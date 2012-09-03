@@ -32,7 +32,7 @@ import javax.xml.parsers.SAXParserFactory;
 public class ParserXML
 {
 	private Resources res=null;
-	String result="";
+	
 	boolean update=false;
 	boolean entry=false;
 	boolean id=false;
@@ -51,6 +51,7 @@ public class ParserXML
 	final Entry currentEntry=new Entry();
 	final List<Entry> messages=new ArrayList<Entry>();
 	
+	private String tmpResult="";
 	private Attributes tmpAttrs;
 	private String tmpValue;
 	
@@ -88,7 +89,7 @@ public class ParserXML
 	
 	public String getResult()
 	{
-		return result;
+		return tmpResult;
 	}
 
 	private InputStream readXml()
@@ -193,17 +194,17 @@ public class ParserXML
 			
 			if(text==true && !localName.equals(TEXT))
 			{
-				result=result+" <"+localName+">";
+				tmpResult=tmpResult+" <"+localName+">";
 				return;
 			}
 			if(shorttext==true && !localName.equals(SHORTTEXT))
 			{
-				result=result+" <"+localName+">";
+				tmpResult=tmpResult+" <"+localName+">";
 				return;
 			}
 			if(item==true && !localName.equals(ITEM))
 			{
-				result=result+" <"+localName+">";
+				tmpResult=tmpResult+" <"+localName+">";
 				return;
 			}
 		}
@@ -213,17 +214,17 @@ public class ParserXML
 		{
 			if(text==true && !localName.equals(TEXT))
 			{
-				result=result+"</"+localName+"> ";
+				tmpResult=tmpResult+"</"+localName+"> ";
 				return;
 			}
 			if(shorttext==true && !localName.equals(SHORTTEXT))
 			{
-				result=result+"</"+localName+"> ";
+				tmpResult=tmpResult+"</"+localName+"> ";
 				return;
 			}
 			if(item==true && !localName.equals(ITEM))
 			{
-				result=result+"</"+localName+"> ";
+				tmpResult=tmpResult+"</"+localName+"> ";
 				return;
 			}
 			
@@ -300,7 +301,7 @@ public class ParserXML
 		public void characters(char[] ch, int start, int length) throws SAXException
 		{
 			String cdata=new String(ch,start,length);
-			if(text==true) result=result+cdata.trim();
+			if(text==true) tmpResult=tmpResult+cdata.trim();
 		}
 	}
 }
