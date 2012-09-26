@@ -1,17 +1,9 @@
 package by.pak.SAXParserXML;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.Bundle;
-import android.sax.Element;
-import android.sax.EndElementListener;
-import android.sax.RootElement;
 import android.util.Log;
-import android.webkit.WebView;
-import android.widget.TextView;
 
-import by.pak.testxmlfile.Message;
 import by.pak.testxmlfile.R;
 
 import org.xml.sax.Attributes;
@@ -31,6 +23,8 @@ import javax.xml.parsers.SAXParserFactory;
 
 public class ParserXML
 {
+	private final String TAG="errorParser";
+	
 	private Resources res=null;
 	
 	boolean update=false;
@@ -51,9 +45,8 @@ public class ParserXML
 	final Entry currentEntry=new Entry();
 	final List<Entry> messages=new ArrayList<Entry>();
 	
-	private String tmpResult="";
-	private Attributes tmpAttrs;
-	private String tmpValue;
+	private String tmpValue="";
+	
 	
 	/**
 	 * SAX Parser
@@ -63,33 +56,33 @@ public class ParserXML
 		res=context.getResources();
 		try
 		{
-			//URL rssUrl=new URL("http://feeds2.feedburner.com/Mobilab");
+			//URL bdUrl=new URL("http://feeds2.feedburner.com/Mobilab");
 			SAXParserFactory factory=SAXParserFactory.newInstance();
 			SAXParser saxParser=factory.newSAXParser();
 			XMLReader xmlReader=saxParser.getXMLReader();
 			XMLHandler xmlHandler=new XMLHandler();
 			xmlReader.setContentHandler(xmlHandler);
-			//InputSource inputSource=new InputSource(rssUrl.openStream());
+			//InputSource inputSource=new InputSource(bdUrl.openStream());
 			InputSource inputSource=new InputSource(readXml());
 			xmlReader.parse(inputSource);
 		}
 		catch (IOException e)
 		{
-			Log.e("errorParser",e.getMessage());
+			Log.e(TAG,"ParserXML"+e.getMessage());
 		}
 		catch (SAXException e)
 		{
-			Log.e("errorParser",e.getMessage());
+			Log.e(TAG,"ParserXML"+e.getMessage());
 		}
 		catch (ParserConfigurationException e)
 		{
-			Log.e("errorParser",e.getMessage());
+			Log.e(TAG,"ParserXML"+e.getMessage());
 		}
 	}
 	
-	public String getResult()
+	public List<Entry> getResult()
 	{
-		return tmpResult;
+		return messages;
 	}
 
 	private InputStream readXml()
@@ -102,9 +95,7 @@ public class ParserXML
 	 */
 	private class XMLHandler extends DefaultHandler
 	{
-		private String tmp;
-		
-		private static final String UPDATE="update";
+		//private static final String UPDATE="update";
 		private static final String ENTRY="entry";
 		private static final String ID="id";
 		private static final String DESCRIPTION="description";
@@ -118,10 +109,6 @@ public class ParserXML
 		private static final String TEXT="text";
 		private static final String SPECIFICATION="specification";
 		private static final String ITEM="item";
-
-		/*
-		public List<Entry> parse()
-		{*/
 
 		@Override
 		public void startElement(String uri, String localName, String qName,Attributes attrs) throws SAXException
@@ -189,22 +176,23 @@ public class ParserXML
 			if(localName.equals(ITEM))
 			{
 				item=true;
+				currentEntry.setItemAttr(attrs);
 				return;
 			}
 			
 			if(text==true && !localName.equals(TEXT))
 			{
-				tmpResult=tmpResult+" <"+localName+">";
+				tmpValue=tmpValue+" <"+localName+">";
 				return;
 			}
 			if(shorttext==true && !localName.equals(SHORTTEXT))
 			{
-				tmpResult=tmpResult+" <"+localName+">";
+				tmpValue=tmpValue+" <"+localName+">";
 				return;
 			}
 			if(item==true && !localName.equals(ITEM))
 			{
-				tmpResult=tmpResult+" <"+localName+">";
+				tmpValue=tmpValue+" <"+localName+">";
 				return;
 			}
 		}
@@ -214,23 +202,25 @@ public class ParserXML
 		{
 			if(text==true && !localName.equals(TEXT))
 			{
-				tmpResult=tmpResult+"</"+localName+"> ";
+				tmpValue=tmpValue+"</"+localName+"> ";
 				return;
 			}
 			if(shorttext==true && !localName.equals(SHORTTEXT))
 			{
-				tmpResult=tmpResult+"</"+localName+"> ";
+				tmpValue=tmpValue+"</"+localName+"> ";
 				return;
 			}
 			if(item==true && !localName.equals(ITEM))
 			{
-				tmpResult=tmpResult+"</"+localName+"> ";
+				tmpValue=tmpValue+"</"+localName+"> ";
 				return;
 			}
 			
 			if(localName.equals(ID))
 			{
 				id=false;
+				currentEntry.setId(tmpValue);
+				tmpValue="";
 				return;
 			}
 			if(localName.equals(DESCRIPTION))
@@ -241,41 +231,57 @@ public class ParserXML
 			if(localName.equals(TITLE))
 			{
 				title=false;
+				currentEntry.setTitle(tmpValue);
+				tmpValue="";
 				return;
 			}
 			if(localName.equals(TYPE))
 			{
 				type=false;
+				currentEntry.setType(tmpValue);
+				tmpValue="";
 				return;
 			}
 			if(localName.equals(STARS))
 			{
 				stars=false;
+				currentEntry.setStars(tmpValue);
+				tmpValue="";
 				return;
 			}
 			if(localName.equals(ICON))
 			{
 				icon=false;
+				currentEntry.setIcon(tmpValue);
+				tmpValue="";
 				return;
 			}
 			if(localName.equals(LATITUDE))
 			{
 				latitude=false;
+				currentEntry.setLatitude(tmpValue);
+				tmpValue="";
 				return;
 			}
 			if(localName.equals(LONGITUDE))
 			{
 				longitude=false;
+				currentEntry.setLongitude(tmpValue);
+				tmpValue="";
 				return;
 			}
 			if(localName.equals(SHORTTEXT))
 			{
 				shorttext=false;
+				currentEntry.setShorttext(tmpValue);
+				tmpValue="";
 				return;
 			}
 			if(localName.equals(TEXT))
 			{
 				text=false;
+				currentEntry.setText(tmpValue);
+				tmpValue="";
 				return;
 			}
 			if(localName.equals(SPECIFICATION))
@@ -286,7 +292,8 @@ public class ParserXML
 			if(localName.equals(ITEM))
 			{
 				item=false;
-				currentEntry.addItem(tmpAttrs,tmpValue);
+				currentEntry.addItem(tmpValue);
+				tmpValue="";
 				return;
 			}
 			if(localName.equals(ENTRY))
@@ -301,7 +308,8 @@ public class ParserXML
 		public void characters(char[] ch, int start, int length) throws SAXException
 		{
 			String cdata=new String(ch,start,length);
-			if(text==true) tmpResult=tmpResult+cdata.trim();
+			//if(id) Log.i("characters",cdata);
+			/*if(text==true)*/ tmpValue=tmpValue+cdata.trim();
 		}
 	}
 }
